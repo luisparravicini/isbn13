@@ -1,4 +1,4 @@
-require 'nokogiri'
+require 'version'
 
 class ISBNError < StandardError
 end
