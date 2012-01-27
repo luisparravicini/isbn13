@@ -9,7 +9,7 @@ module ISBN13
     return false if isbn.nil?
 
     isbn = isbn.gsub(/-/, '')
-    return false unless isbn =~ /^\d{13}$/
+    return false unless valid_form?(isbn)
 
     sum = 0
     13.times { |i| sum += i.modulo(2)==0 ? isbn[i].to_i : isbn[i].to_i*3 }
@@ -17,7 +17,7 @@ module ISBN13
   end
 
   def self.format(isbn)
-    return isbn unless isbn =~ /^\d{13}$/
+    return isbn unless valid_form?(isbn)
     load
 
     breaks = [3]
@@ -60,6 +60,8 @@ module ISBN13
   end
 
   private
+
+  def self.valid_form?(x); x =~ /^\d{13}$/; end
 
   def self.save(ranges, path=ranges_path)
     File.open(path, 'w') { |io| io.write Marshal.dump(ranges) }
