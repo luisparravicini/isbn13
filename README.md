@@ -14,11 +14,11 @@ Validation and correct formatting of an ISBN13 number.
 
 ## Formatting
 
-A formatted ISBN13 number is on the form: GS1-GROUP-PUBLISHER-ITEM_NUMBER-CHECKSUM. The problem is, only GS1 and CHECKSUM has fixed lengths. The other components lengths vary according to the ranges assigned by the international/national ISBN agencies.
+A formatted ISBN13 number is in the form: GS1-GROUP-PUBLISHER-ITEM_NUMBER-CHECKSUM. The problem is, only GS1 and CHECKSUM has fixed lengths. The other components lengths vary according to the ranges assigned by the international/national ISBN agencies.
 
-So, how can an ISBN13 be properly hyphenated? I've found RangeMessage.xml at http://www.isbn-international.org/page/ranges containing a list of UCC / Groups prefixes which I've used initially for formatting, but later found some errors hyphenating some isbns from Uruguay.
+So, how can an ISBN13 be properly hyphenated? I've found RangeMessage.xml at http://www.isbn-international.org/page/ranges containing a list of UCC / Groups prefixes which I've used initially for formatting, but later found some errors hyphenating some isbns from Uruguay (don't know whether this problem was my fault or the data from the xml file was not correct (I suspect it was my mistake)).
 
-Later I've found a [ISBN10 to ISBN13 converter](http://www.isbn-international.org/ia/isbncvt) which have all the ranges defined as arrays in Javascript. And that's the data I've used to hyphenate the isbns. There's a bin/make_isbn_ranges.rb which downloads/parses the page and creates a new data file to be used by the gem.
+Later I've found an [ISBN10 to ISBN13 converter](http://www.isbn-international.org/ia/isbncvt) which have all the ranges defined as arrays in Javascript. And that's the data I've used to hyphenate the isbns. There's a bin/make_isbn_ranges.rb which downloads/parses the page and creates a new data file to be used by the gem.
 
 ## Requeriments
 
