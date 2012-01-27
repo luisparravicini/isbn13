@@ -20,6 +20,10 @@ So, how can an ISBN13 be properly hyphenated? I've found RangeMessage.xml at htt
 
 Later I've found a [ISBN10 to ISBN13 converter](http://www.isbn-international.org/ia/isbncvt) which have all the ranges defined as arrays in Javascript. And that's the data I've used to hyphenate the isbns. There's a bin/make_isbn_ranges.rb which downloads/parses the page and creates a new data file to be used by the gem.
 
+## Requeriments
+
+I've only tested it on Ruby 1.9.2.
+
 ## Installation
 
     gem install isbn13
