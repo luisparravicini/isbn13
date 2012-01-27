@@ -1,25 +1,24 @@
 # ISBN13
 
-Validation and correct formatting of and ISBN13 number.
+Validation and correct formatting of an ISBN13 number.
 
 ## Usage
 
-  require 'isbn13'
+    require 'isbn13'
 
-  ISBN13.format('9789873303111') # => '978-987-33-0311-1'
+    ISBN13.format('9789873303111') # => '978-987-33-0311-1'
 
-  ISBN13.valid?('978-987-33-0311-1') # => true
-  ISBN13.valid?('9789873303111') # => true
+    ISBN13.valid?('978-987-33-0311-1') # => true
+    ISBN13.valid?('9789873303111') # => true
 
 
 ## Formatting
 
-A formatted ISBN13 number consists is on the form: GS1-GROUP-PUBLISHER-ITEM_NUMBER-CHECKSUM. The problem is, only GS1 and CHECKSUM has fixed lengths. The other components lengths vary according to the ranges assigned by the international/national ISBN agencies.
+A formatted ISBN13 number is on the form: GS1-GROUP-PUBLISHER-ITEM_NUMBER-CHECKSUM. The problem is, only GS1 and CHECKSUM has fixed lengths. The other components lengths vary according to the ranges assigned by the international/national ISBN agencies.
 
-So, how can an ISBN13 be properly hyphenated? I've found RangeMessage.xml at [http://www.isbn-international.org/page/ranges] containing a list of UCC / Groups prefixes which I've used initially for formatting, but later found some errors hyphenating some isbns from Uruguay.
+So, how can an ISBN13 be properly hyphenated? I've found RangeMessage.xml at http://www.isbn-international.org/page/ranges containing a list of UCC / Groups prefixes which I've used initially for formatting, but later found some errors hyphenating some isbns from Uruguay.
 
-Later I've found an [http://www.isbn-international.org/ia/isbncvt](ISBN10 to ISBN13 converter) which have all the ranges defined as arrays in Javascript. And that's the data I've used for hyphenate the isbns. There's a bin/make_isbn_ranges.rb which downloads/parses the page and creates a new data file to be used by the gem.
-
+Later I've found a [ISBN10 to ISBN13 converter](http://www.isbn-international.org/ia/isbncvt) which have all the ranges defined as arrays in Javascript. And that's the data I've used to hyphenate the isbns. There's a bin/make_isbn_ranges.rb which downloads/parses the page and creates a new data file to be used by the gem.
 
 ## Author
 
