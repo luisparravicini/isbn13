@@ -55,6 +55,8 @@ module ISBN13
     result.join('-')
   end
 
+  private
+
   def self.parse(path=nil)
     ucc, groups = RangesParser.parse(path)
     @ranges = { :ucc => ucc, :groups => groups }
