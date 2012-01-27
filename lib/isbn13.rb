@@ -55,17 +55,11 @@ module ISBN13
     result.join('-')
   end
 
-  private
-
-  def self.parse(path=nil)
-    ucc, groups = RangesParser.parse(path)
-    @ranges = { :ucc => ucc, :groups => groups }
-    save
-  end
-
   def self.ranges_path
     File.join(File.dirname(__FILE__), 'ranges.bin')
   end
+
+  private
 
   def self.save
     File.open(ranges_path, 'w') { |io| io.write Marshal.dump(@ranges) }

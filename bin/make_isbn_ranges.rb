@@ -1,9 +1,13 @@
+$LOAD_PATH << File.join(File.dirname(__FILE__), '..', 'lib')
+require 'isbn13'
 require 'mechanize'
 
 # reading from a file is only intended for dev/test purposes
 content = if File.exists?('isbncvt')
+  puts 'reading ranges from local file'
   IO.read('isbncvt')
 else
+  puts 'downloading ranges from isbn-international.org'
   agent = Mechanize.new
   agent.user_agent_alias = 'Mac Safari'
 
@@ -13,6 +17,7 @@ else
 end
 
 
+puts 'parsing'
 ranges = Hash.new
 # ranges are defined in javascript as:
 # ranges['xxx'][y][z] = 'first_value';
@@ -41,4 +46,8 @@ ranges.values.each do |data|
 end
 
 
-File.open('ranges.bin', 'w') { |io| io.write(Marshal.dump(ranges)) }
+path = File.basename(ISBN13.ranges_path)
+puts "creating " + path
+File.open(path, 'w') { |io| io.write(Marshal.dump(ranges)) }
+
+puts "\nyou must replace the file #{ISBN13.ranges_path} (inside the gem) with this new file"
