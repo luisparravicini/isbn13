@@ -48,6 +48,6 @@ end
 
 path = File.basename(ISBN13.ranges_path)
 puts "creating " + path
-File.open(path, 'w') { |io| io.write(Marshal.dump(ranges)) }
+ISBN13.save(ranges, path)
 
 puts "\nyou must replace the file #{ISBN13.ranges_path} (inside the gem) with this new file"

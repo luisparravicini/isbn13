@@ -61,8 +61,8 @@ module ISBN13
 
   private
 
-  def self.save
-    File.open(ranges_path, 'w') { |io| io.write Marshal.dump(@ranges) }
+  def self.save(ranges, path=ranges_path)
+    File.open(path, 'w') { |io| io.write Marshal.dump(ranges) }
   end
 
   def self.load
