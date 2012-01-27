@@ -34,6 +34,10 @@ class ISBN13Test < Test::Unit::TestCase
     assert_isbn '978-9974-32-269-1'
   end
 
+  def test_invalid_format
+    assert_raise(ISBNError) { ISBN13.format('sdlkasjdlka') }
+  end
+
   def test_valid
     assert_true ISBN13.valid?('9789974100268')
   end

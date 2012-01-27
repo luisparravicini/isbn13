@@ -17,7 +17,7 @@ module ISBN13
   end
 
   def self.format(isbn)
-    return isbn unless valid_form?(isbn)
+    raise ISBNError.new("#{isbn} is not a proper ISBN13 number") unless valid_form?(isbn)
     load
 
     breaks = [3]
